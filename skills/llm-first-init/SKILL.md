@@ -1,17 +1,14 @@
+---
+name: llm-first-init
+description: >
+  Scaffold new LLM-First projects from real-world sources (docs, meetings, data).
+  Creates structured markdown with stable IDs, explicit relationships, and traceability.
+  WHEN: new project scaffolding, onboard project, capture knowledge, LLM-first init,
+  structure scattered sources, create project from meetings/docs, multi-team coordination,
+  external audit traceability, knowledge transfer before offboarding.
+---
+
 # /llm-first-init — LLM-First Project Scaffolding Skill
-
-> Create new projects that are LLM-First by default.
-> Scaffold structure, invariants, and traceability — not content.
-> Make projects safe, comprehensible, and reusable for BOTH humans and agents.
-
-## When to Use
-
-Use `/llm-first-init` when:
-- Starting a new project from scattered sources (docs, meetings, data)
-- Onboarding to an existing project that lacks structure
-- A key person is leaving and knowledge must be captured
-- Multiple teams need to coordinate with shared vocabulary
-- An external audience (audit, leadership, customers) needs traceable evidence
 
 ## Methodology
 
@@ -95,30 +92,7 @@ The skill executes 6 phases sequentially, waiting for user confirmation at gates
 ### Phase 5: SCAFFOLD
 **Trigger:** Phase 4 complete (user confirmed)
 **Actions:**
-Generate the following files in the target directory:
-
-| File | Content | ID Scheme |
-|------|---------|-----------|
-| `PROJECT.md` | Master index, methodology reference, canonical source declaration, exit criteria, verification prompts | — |
-| `GLOSSARY.md` | Canonical definitions for all project terms; ambiguous terms flagged with ⚠️ pointing to AMB-* entries | `DEF-*` |
-| `ENTITIES.md` | People, teams, systems, artifacts with roles and relationships | `ENT-*` |
-| `ACTIVITIES.md` | Work items / action items with owner, status, evidence, dependencies | `ACT-*` |
-| `RELATIONSHIPS.md` | Explicit link map — navigable markdown (no code-block trees) | — |
-| `DECISIONS.md` | Strategic decisions from meetings and documents with rationale | `DEC-*` |
-| `SOURCES.md` | Catalog of all input sources with retrieval metadata | `SRC-*` |
-| `DISCOVERY.md` | Search log with triage decisions (included/excluded/deferred) | `DISC-*` |
-| `CONSISTENCY_REPORT.md` | Conflicts, ambiguities, gaps with resolution status | `CON-*`, `AMB-*`, `GAP-*` |
-| `STATUS_BRIEF.md` | Audience-specific projection (at least one) | — |
-
-**Structural guarantees enforced:**
-- Every entity has a stable ID with `{#anchor}`
-- Every cross-file reference uses full-path format `[ID](FILE.md#anchor)`
-- Every activity links to its originating commitment and source
-- Every decision links to its source meeting/document
-- Every status claim has an evidence field (even if empty)
-- Canonical source declaration present
-- Methodology reference present (link, not duplication)
-- Exit criteria section present
+Generate 10 scaffold files in the target directory. Load `references/scaffold-schema.md` for the full file table, ID schemes, and structural guarantees that must be enforced.
 
 **Output:** Complete project scaffold
 **Gate:** Proceeds to Phase 6
@@ -177,4 +151,4 @@ All outputs are markdown following [LLM-First principles](https://github.com/gim
 
 ## Reference Implementation
 
-See [ServiceTreeAudit](../../examples/) — a scaffold produced from 15 real-world sources for an internal audit remediation project.
+See [ServiceTreeAudit](https://github.com/gim-home/llm-first-skills/tree/main/examples/ServiceTreeAudit) — a scaffold produced from 15 real-world sources for an internal audit remediation project.
