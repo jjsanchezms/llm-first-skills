@@ -16,6 +16,12 @@ Identifies principle misalignment, failure mode vulnerabilities, and structural 
 
 **[Skill Definition →](skills/llm-first-audit/SKILL.md)**
 
+### `/llm-first-reporting` — Human-Readable Report Generation
+Generates prose-first reports from LLM-First projects for human audiences.
+Supports status briefs, executive summaries, team briefings, progress reports, and audit summaries.
+
+**[Skill Definition →](skills/llm-first-reporting/SKILL.md)**
+
 ## Methodology
 
 These skills implement the methodology defined in [LLM-First Specification](https://github.com/gim-home/llm-first-specs):
@@ -36,9 +42,12 @@ llm-first-skills/
     ├── llm-first-init/
     │   ├── SKILL.md                   # Skill definition
     │   └── references/                # Schema and acceptance criteria
-    └── llm-first-audit/
+    ├── llm-first-audit/
+    │   ├── SKILL.md                   # Skill definition
+    │   └── references/                # Evaluation and acceptance criteria
+    └── llm-first-reporting/
         ├── SKILL.md                   # Skill definition
-        └── references/                # Evaluation and acceptance criteria
+        └── references/                # Formatting conventions and acceptance criteria
 ```
 
 ## Requirements

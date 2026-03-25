@@ -15,7 +15,8 @@
 | `SOURCES.md` | Catalog of all input sources with retrieval metadata | `SRC-*` |
 | `DISCOVERY.md` | Search log with triage decisions (included/excluded/deferred) | `DISC-*` |
 | `CONSISTENCY_REPORT.md` | Conflicts, ambiguities, gaps with resolution status | `CON-*`, `AMB-*`, `GAP-*` |
-| `STATUS_BRIEF.md` | Audience-specific projection (at least one) | — |
+
+> **Note:** Human-readable projections (status briefs, executive summaries) are produced by [`/llm-first-reporting`](../../llm-first-reporting/SKILL.md). This skill produces the structured source of truth; the reporting skill projects it for human audiences.
 
 ## Structural Guarantees
 

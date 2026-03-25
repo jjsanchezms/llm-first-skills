@@ -4,7 +4,7 @@
 
 | # | Criterion | How to Verify |
 |---|-----------|---------------|
-| AC-1 | Produces all 10 scaffold files in target directory | Check: PROJECT.md, GLOSSARY.md, ENTITIES.md, ACTIVITIES.md, RELATIONSHIPS.md, DECISIONS.md, SOURCES.md, DISCOVERY.md, CONSISTENCY_REPORT.md, STATUS_BRIEF.md |
+| AC-1 | Produces all 9 scaffold files in target directory | Check: PROJECT.md, GLOSSARY.md, ENTITIES.md, ACTIVITIES.md, RELATIONSHIPS.md, DECISIONS.md, SOURCES.md, DISCOVERY.md, CONSISTENCY_REPORT.md |
 | AC-2 | Every entity across all files has a stable ID with `{#anchor}` | Grep all files for entity headers; each must have `{#ID}` anchor |
 | AC-3 | Every cross-file reference uses full-path format `[ID](FILE.md#anchor)` | No bare-anchor cross-file refs (e.g., `[ID](#anchor)` referencing another file) |
 | AC-4 | All cross-file links resolve to existing anchors | Follow every `[...](FILE.md#anchor)` link; target file and anchor must exist |
@@ -19,12 +19,12 @@
 
 ### Scenario 1: Full pipeline with WorkIQ
 - **Input:** Project name + 3 SharePoint URLs + 1 Teams meeting link
-- **Expected:** All 6 phases execute; 10 files produced; user prompted at 3 gates; DISCOVERY.md contains WorkIQ search results
+- **Expected:** All 7 phases execute; 9 files produced; user prompted at 3 gates; DISCOVERY.md contains WorkIQ search results
 - **Validates:** AC-1, AC-5, AC-6, AC-10
 
 ### Scenario 2: Graceful degradation without WorkIQ
 - **Input:** Project name + manual text paste (no URLs)
-- **Expected:** Phase 1 accepts paste; Phase 2 skipped with note in DISCOVERY.md; Phases 3-6 produce valid scaffold
+- **Expected:** Phase 1 accepts paste; Phase 2 skipped with note in DISCOVERY.md; Phases 3-6 produce valid scaffold (9 files)
 - **Validates:** AC-8, AC-1, AC-2, AC-3
 
 ### Scenario 3: Cross-file link integrity

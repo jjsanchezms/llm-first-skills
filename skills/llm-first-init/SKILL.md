@@ -27,7 +27,7 @@ The methodology repo is the authoritative reference; this skill references it, n
 - FM-3: Overloaded definitions → Ambiguity surfacing with AMB-* items
 - FM-5: Mixing truth with drafts → Canonical source declaration
 - FM-6: Word/Loop in authoring path → Markdown as POR
-- FM-7: Missing projections → At least one audience view generated
+- FM-7: Missing projections → Handled by [`/llm-first-reporting`](../llm-first-reporting/SKILL.md)
 - FM-8: No verification loop → Built-in structural validation + verification prompts
 
 ## Pipeline
@@ -113,7 +113,9 @@ The skill executes 7 phases sequentially (Phase 0 + 6 pipeline phases), waiting 
 ### Phase 5: SCAFFOLD
 **Trigger:** Phase 4 complete (user confirmed)
 **Actions:**
-Generate 10 scaffold files in the target directory. Load `references/scaffold-schema.md` for the full file table, ID schemes, and structural guarantees that must be enforced.
+Generate 9 scaffold files in the target directory. Load `references/scaffold-schema.md` for the full file table, ID schemes, and structural guarantees that must be enforced.
+
+> **Note:** Human-readable projections (status briefs, executive summaries) are produced by [`/llm-first-reporting`](../llm-first-reporting/SKILL.md), not by this skill.
 
 **Output:** Complete project scaffold
 **Gate:** Proceeds to Phase 6
