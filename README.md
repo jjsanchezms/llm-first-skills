@@ -1,6 +1,6 @@
 # LLM-First Skills
 
-Skills for [Agency Copilot CLI](https://docs.github.com/copilot/how-tos/copilot-cli) that scaffold and audit projects using the [LLM-First Specification methodology](https://github.com/gim-home/llm-first-specs).
+Skills for [GitHub Copilot CLI](https://docs.github.com/copilot/how-tos/copilot-cli) (Claude) that scaffold and audit projects using the [LLM-First Specification methodology](https://github.com/gim-home/llm-first-specs).
 
 ## Skills
 
@@ -52,6 +52,6 @@ llm-first-skills/
 
 ## Requirements
 
-- Agency Copilot CLI
+- GitHub Copilot CLI (Claude)
 - WorkIQ MCP tool (for authenticated source retrieval and discovery)
 - Graceful degradation when WorkIQ unavailable (manual input, discovery skipped)
