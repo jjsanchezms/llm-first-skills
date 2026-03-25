@@ -64,6 +64,7 @@ Use clear, descriptive headers that communicate content — not file-internal te
 
 Prefer narrative structure:
 - **Status Brief:** Summary → What's Working → What's Blocked → What Needs Attention → Next Steps
+- **Status Brief (V-Team brief focus):** Status → Action Items → Risks. Keep it short and scannable — one or two sentences per item, bulleted lists preferred. Target half a page. No background context (the v-team already has it). Name owners on action items. Flag risks with severity (high/medium).
 - **Executive Summary:** Context → Key Findings → Recommendations → Timeline
 - **Team Briefing:** Your Focus → Dependencies → Blockers → Decisions Needed
 - **Progress Report:** Since Last Report → Completed → In Progress → New Blockers → Upcoming

@@ -87,7 +87,12 @@ Structured files ──→ /llm-first-reporting ──→ Human-readable report
 **Actions:**
 - Ask user: What type of report? (status brief, executive summary, team briefing, progress report, audit summary)
 - Ask user: Who is the audience? (e.g., "VP of Engineering", "ServiceTree migration team", "external auditors")
-- Ask user: Any specific focus areas? (optional — e.g., "focus on blocked items", "highlight decisions from last week")
+- Ask user: Any specific focus? Offer these predefined options plus a freeform option:
+  1. **Full overview** — Cover everything: status, risks, blockers, decisions, next steps
+  2. **V-Team brief** — Simple and scannable: current status, action items, risks. Designed for the internal team working on the project day-to-day
+  3. **Deadline readiness** — Frame around milestone countdown: what must happen by when
+  4. **Blocked & at-risk items** — Emphasize stalled work, blockers, disputed activities, and critical not-started items
+  5. Type something (freeform — e.g., "highlight decisions from last week")
 - If "progress report", ask: What is the reference point? (e.g., "since last week", "since the last STATUS_BRIEF.md")
 **Output:** Report parameters captured
 **Gate:** None — proceeds to Phase 3

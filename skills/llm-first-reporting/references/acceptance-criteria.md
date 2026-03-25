@@ -21,6 +21,11 @@
 - **Expected:** STATUS_BRIEF.md produced; prose-first format; bracket tags only on key blocked items and decisions; no more than 1 page of content
 - **Validates:** AC-1, AC-2, AC-3, AC-4, AC-5
 
+### Scenario 1b: V-Team brief from an init scaffold
+- **Input:** A project directory with scaffold files, report type "status brief", focus "V-Team brief", audience "v-team"
+- **Expected:** STATUS_BRIEF.md produced; three sections (Status, Action Items, Risks); half-page or less; bulleted items with owners; no background context; risks tagged with severity
+- **Validates:** AC-1, AC-2, AC-3, AC-5
+
 ### Scenario 2: Audit summary from audit output
 - **Input:** A project directory containing AUDIT_REPORT.md from `/llm-first-audit`, report type "audit summary", audience "project team"
 - **Expected:** AUDIT_SUMMARY.md produced; narrative explaining scores and findings; bracket tags on specific improvement items; actionable next steps
