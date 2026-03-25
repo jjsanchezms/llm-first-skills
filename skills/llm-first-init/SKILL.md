@@ -157,6 +157,7 @@ All outputs are markdown following [LLM-First principles](https://github.com/gim
 - Does NOT generate project deliverables (reports, code, plans)
 - Does NOT replace domain expertise
 - Does NOT manage ongoing execution (sprints, status updates)
+- Does NOT evolve existing projects with new information — that's [`/llm-first-update`](../llm-first-update/SKILL.md)
 - Does NOT modify source documents or external systems
 - Does NOT make decisions — surfaces information for humans to decide
 - Does NOT duplicate the methodology — references it

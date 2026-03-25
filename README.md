@@ -1,6 +1,6 @@
 # LLM-First Skills
 
-Skills for [GitHub Copilot CLI](https://docs.github.com/copilot/how-tos/copilot-cli) (Claude) that scaffold and audit projects using the [LLM-First Specification methodology](https://github.com/gim-home/llm-first-specs).
+Skills for [GitHub Copilot CLI](https://docs.github.com/copilot/how-tos/copilot-cli) (Claude) that scaffold, evolve, audit, and report on projects using the [LLM-First Specification methodology](https://github.com/gim-home/llm-first-specs).
 
 ## Skills
 
@@ -9,6 +9,12 @@ Creates LLM-First projects from real-world inputs (documents, meetings, data).
 Produces structured, traceable, agent-comprehensible project scaffolds.
 
 **[Skill Definition →](skills/llm-first-init/SKILL.md)**
+
+### `/llm-first-update` — Project Evolution
+Evolves existing LLM-First projects with new information from meetings, documents, or data.
+Ingests new sources, matches to existing entities, produces a change delta for user approval, and applies approved changes.
+
+**[Skill Definition →](skills/llm-first-update/SKILL.md)**
 
 ### `/llm-first-audit` — Methodology Compliance Audit
 Audits any project against the LLM-First methodology.
@@ -31,7 +37,7 @@ These skills implement the methodology defined in [LLM-First Specification](http
 
 The methodology repo is the authoritative reference. These skills reference it; they do not duplicate it.
 
-> **Runtime dependency:** Both skills load the methodology repo content into context before execution (Phase 0). If the user cannot access `gim-home/llm-first-specs`, the skills will not run.
+> **Runtime dependency:** All skills load the methodology repo content into context before execution (Phase 0). If the user cannot access `gim-home/llm-first-specs`, the skills will not run.
 
 ## Architecture
 
@@ -42,6 +48,9 @@ llm-first-skills/
     ├── llm-first-init/
     │   ├── SKILL.md                   # Skill definition
     │   └── references/                # Schema and acceptance criteria
+    ├── llm-first-update/
+    │   ├── SKILL.md                   # Skill definition
+    │   └── references/                # Delta schema and acceptance criteria
     ├── llm-first-audit/
     │   ├── SKILL.md                   # Skill definition
     │   └── references/                # Evaluation and acceptance criteria
