@@ -39,6 +39,8 @@ Do NOT tag:
 - Definitions that are obvious from context
 - Items listed only for background
 
+**Placement:** Place bracket tags at the **end** of the item title or statement, not inline within prose. They should read like footnote markers — small, unobtrusive, there for traceability but not interrupting the narrative flow.
+
 **Too many tags:**
 ```
 The ServiceTree [ENT-001] migration [ACT-023] was decided [DEC-007] by the
@@ -64,11 +66,39 @@ Use clear, descriptive headers that communicate content — not file-internal te
 
 Prefer narrative structure:
 - **Status Brief:** Summary → What's Working → What's Blocked → What Needs Attention → Next Steps
-- **Status Brief (V-Team brief focus):** Status → Action Items → Risks. Keep it short and scannable — one or two sentences per item, bulleted lists preferred. Target half a page. No background context (the v-team already has it). Name owners on action items. Flag risks with severity (high/medium).
+- **Status Brief (V-Team brief focus):** Exactly **3 sections**: Status → Action Items → Risks. Keep it short and scannable — one or two sentences per item, bulleted lists preferred. Target half a page. No background context (the v-team already has it). Name owners on action items. Flag risks with severity (Critical/High/Medium). No additional sections beyond these three.
 - **Executive Summary:** Context → Key Findings → Recommendations → Timeline
 - **Team Briefing:** Your Focus → Dependencies → Blockers → Decisions Needed
 - **Progress Report:** Since Last Report → Completed → In Progress → New Blockers → Upcoming
 - **Audit Summary:** Overall Score → Strengths → Vulnerabilities → Top Recommendations
+
+### 4b. Blocking Chains
+
+When RELATIONSHIPS.md defines blocking dependencies between activities, surface them inline rather than listing items as independent. This helps readers prioritize correctly.
+
+**Without blocking context:**
+```
+- Schedule audit intro meeting [ACT-016]
+- Define acceptance criteria for audit closure [ACT-018]
+```
+
+**With blocking context:**
+```
+- Schedule audit intro meeting — blocks closure criteria definition [ACT-016] [ACT-018]
+```
+
+### 4c. Data Quality Disclosure
+
+When source files indicate incomplete, unretrievable, or partially indexed data (e.g., a GAP-\* item noting retrieval failures, or a CON-\* item noting unindexed rationale), the report **must** include a brief disclosure. Place it at the end of the report:
+
+```
+---
+⚠️ **Data limitations:** Source content for [SRC-004], [SRC-005], [SRC-006] was not
+fully retrievable; summaries were used. Two disputed MAP items (CON-003) have not
+been identified in the structured files.
+```
+
+This ensures readers know where the report's confidence is lower.
 
 ### 5. Audience-Appropriate Language
 

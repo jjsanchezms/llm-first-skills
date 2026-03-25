@@ -103,12 +103,37 @@ Structured files ──→ /llm-first-reporting ──→ Human-readable report
 - Generate the report following formatting conventions:
   - Write in natural prose, structured with clear headers
   - Use bracket tags `[ACT-023]` sparingly — only on items a reader might want to comment on or trace
+  - Place bracket tags at the **end** of the item title, styled as footnote-like markers (small, superscript feel) — not inline within prose
   - Never use full markdown links in the body
   - Tailor language and detail level to the stated audience
   - Prioritize: what matters to this audience → what's changed → what needs action
 - For each report type, follow the structure defined in `references/formatting-conventions.md`
+- **V-Team brief enforcement:** When focus is "V-Team brief", the report **must** use exactly this template:
+  ```
+  ## Status
+  One paragraph: total counts, overall trajectory, biggest change since last check-in.
+
+  ## Action Items
+  Bulleted list by owner. One line per item. Bracket tag at end of item title.
+
+  ## Risks
+  Bulleted list. Each risk tagged with severity (Critical/High/Medium). Bracket tag at end.
+  ```
+  No additional sections. Target half a page. No background context — the v-team already has it.
+- **Blocking chains:** When RELATIONSHIPS.md shows blocking dependencies between activities, surface them inline (e.g., "Schedule audit intro meeting — blocks closure criteria definition ᴬᶜᵀ⁻⁰¹⁶ ᴬᶜᵀ⁻⁰¹⁸"). This helps the audience prioritize.
 **Output:** Draft report
 **Gate:** Present draft to user → user reviews
+
+### Phase 3.5: RECONCILIATION
+**Trigger:** Phase 3 complete (before presenting to user)
+**Actions:**
+- Cross-check the draft report against source files:
+  - Every activity with status "At Risk" or "Not Started — Critical" in ACTIVITIES.md **must** appear in the report
+  - Every consistency item (CON-\*, AMB-\*, GAP-\*) with severity "Critical" or "High" **must** be either mentioned in the report or explicitly listed in an "Out of Scope" note with justification
+  - If CONSISTENCY_REPORT.md or SOURCES.md flag incomplete/unretrievable data (e.g., GAP-005), the report **must** include a data quality disclosure
+- If the check finds missing items, add them to the draft before presenting
+**Output:** Reconciled draft report
+**Gate:** None — proceeds to Phase 4
 
 ### Phase 4: REVIEW
 **Trigger:** Phase 3 complete
