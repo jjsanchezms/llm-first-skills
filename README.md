@@ -25,22 +25,20 @@ These skills implement the methodology defined in [LLM-First Specification](http
 
 The methodology repo is the authoritative reference. These skills reference it; they do not duplicate it.
 
-## Examples
-
-- **[ServiceTreeAudit](examples/)** — Reference implementation produced by `/llm-first-init` from 15 real-world sources (audit report, MAPs, meeting transcripts, governance docs, ADO items)
+> **Runtime dependency:** Both skills load the methodology repo content into context before execution (Phase 0). If the user cannot access `gim-home/llm-first-specs`, the skills will not run.
 
 ## Architecture
 
 ```
 llm-first-skills/
 ├── README.md                          # This file
-├── skills/
-│   ├── llm-first-init/
-│   │   └── SKILL.md                   # Skill definition
-│   └── llm-first-audit/
-│       └── SKILL.md                   # Skill definition
-└── examples/
-    └── ServiceTreeAudit → ../../ServiceTreeAudit  # Reference implementation
+└── skills/
+    ├── llm-first-init/
+    │   ├── SKILL.md                   # Skill definition
+    │   └── references/                # Schema and acceptance criteria
+    └── llm-first-audit/
+        ├── SKILL.md                   # Skill definition
+        └── references/                # Evaluation and acceptance criteria
 ```
 
 ## Requirements

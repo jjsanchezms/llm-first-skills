@@ -16,7 +16,7 @@
 ## Test Scenarios
 
 ### Scenario 1: Audit an llm-first-init scaffold
-- **Input:** The `examples/ServiceTreeAudit` directory
+- **Input:** Any project directory scaffolded by `/llm-first-init` (10 markdown files with stable IDs, cross-file links, and structural guarantees)
 - **Expected:** High scores (4-5) on most principles, most failure modes PROTECTED, few structural issues
 - **Validates:** AC-1, AC-2, AC-3, AC-4, AC-5
 

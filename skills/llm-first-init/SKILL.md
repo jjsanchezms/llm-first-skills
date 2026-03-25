@@ -32,7 +32,28 @@ The methodology repo is the authoritative reference; this skill references it, n
 
 ## Pipeline
 
-The skill executes 6 phases sequentially, waiting for user confirmation at gates.
+The skill executes 7 phases sequentially (Phase 0 + 6 pipeline phases), waiting for user confirmation at gates.
+
+### Phase 0: LOAD METHODOLOGY
+**Trigger:** Skill invoked
+**Actions:**
+- Fetch the methodology repo content from [gim-home/llm-first-specs](https://github.com/gim-home/llm-first-specs) using `github-mcp-server-get_file_contents`
+- **Access gate:** Attempt to read `README.md` from `owner: gim-home, repo: llm-first-specs`. If this fails (404, auth error), **STOP immediately** and tell the user:
+  > ⛔ Cannot access the LLM-First Specification methodology repo (`gim-home/llm-first-specs`).
+  > This skill requires the methodology as loaded context. Please authenticate to the `gim-home` GitHub EMU org and retry.
+  > Run `gh auth login` and sign in with your `@microsoft.com` EMU account.
+- **Fetch and hold in context** the following files (all from `owner: gim-home, repo: llm-first-specs`):
+  - `WHITEPAPER_LLM_Driven_Specification.md` — Core methodology, principles, failure modes
+  - `CASE_STUDY_1_SovereignAgent.md` — Example: specs as queryable knowledge
+  - `CASE_STUDY_2_MultiTeam.md` — Example: multi-team coordination
+  - `CASE_STUDY_3_Documentation.md` — Example: documentation at scale
+  - `CASE_STUDY_4_Methodology.md` — Example: methodology capture (closest to init output)
+  - `CASE_STUDY_5_InContextData.md` — Example: SQL in-context data
+  - `references/methodology.md` — Engagement methodology reference
+  - `references/structured-data-and-llm-grounding.md` — Research: why structure reduces hallucination
+- These files become the loaded reference for all subsequent pipeline phases
+**Output:** Methodology context loaded
+**Gate:** None — proceeds automatically to Phase 1 (or stops if access check fails)
 
 ### Phase 1: INTAKE
 **Trigger:** User provides project name + source links
@@ -149,6 +170,11 @@ All outputs are markdown following [LLM-First principles](https://github.com/gim
   - Phase 2: Skip discovery, note limitation in DISCOVERY.md
   - Phases 3-6: Proceed normally with available sources
 
-## Reference Implementation
+## Reference Examples
 
-See [ServiceTreeAudit](https://github.com/gim-home/llm-first-skills/tree/main/examples/ServiceTreeAudit) — a scaffold produced from 15 real-world sources for an internal audit remediation project.
+The [LLM-First Specification](https://github.com/gim-home/llm-first-specs) repo contains case studies that demonstrate the methodology principles applied in practice:
+- [Case Study 1: SovereignAgent](https://github.com/gim-home/llm-first-specs/blob/main/CASE_STUDY_1_SovereignAgent.md) — Specs as queryable knowledge
+- [Case Study 4: Methodology Capture](https://github.com/gim-home/llm-first-specs/blob/main/CASE_STUDY_4_Methodology.md) — Closest to scaffolding output
+- [Example User Story](https://github.com/gim-home/llm-first-specs/blob/main/references/US-5616693.md) — Executable user story with stable IDs
+
+These are loaded into context at runtime via Phase 0.

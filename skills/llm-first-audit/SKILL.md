@@ -25,6 +25,27 @@ Four evaluation dimensions — load `references/evaluation-criteria.md` for full
 
 ## Pipeline
 
+### Phase 0: LOAD METHODOLOGY
+**Trigger:** Skill invoked
+**Actions:**
+- Fetch the methodology repo content from [gim-home/llm-first-specs](https://github.com/gim-home/llm-first-specs) using `github-mcp-server-get_file_contents`
+- **Access gate:** Attempt to read `README.md` from `owner: gim-home, repo: llm-first-specs`. If this fails (404, auth error), **STOP immediately** and tell the user:
+  > ⛔ Cannot access the LLM-First Specification methodology repo (`gim-home/llm-first-specs`).
+  > This skill requires the methodology as loaded context. Please authenticate to the `gim-home` GitHub EMU org and retry.
+  > Run `gh auth login` and sign in with your `@microsoft.com` EMU account.
+- **Fetch and hold in context** the following files (all from `owner: gim-home, repo: llm-first-specs`):
+  - `WHITEPAPER_LLM_Driven_Specification.md` — Core methodology, principles, failure modes
+  - `CASE_STUDY_1_SovereignAgent.md` — Example: specs as queryable knowledge
+  - `CASE_STUDY_2_MultiTeam.md` — Example: multi-team coordination
+  - `CASE_STUDY_3_Documentation.md` — Example: documentation at scale
+  - `CASE_STUDY_4_Methodology.md` — Example: methodology capture
+  - `CASE_STUDY_5_InContextData.md` — Example: SQL in-context data
+  - `references/methodology.md` — Engagement methodology reference
+  - `references/structured-data-and-llm-grounding.md` — Research: why structure reduces hallucination
+- These files become the loaded reference for all subsequent pipeline phases (especially Phase 3: PRINCIPLE ALIGNMENT and Phase 4: FAILURE MODE ASSESSMENT)
+**Output:** Methodology context loaded
+**Gate:** None — proceeds automatically to Phase 1 (or stops if access check fails)
+
 ### Phase 1: SCAN
 - Read all markdown files in the target directory
 - Build an inventory of: files, IDs, anchors, cross-file links, entity types
@@ -85,6 +106,11 @@ Generate `AUDIT_REPORT.md` with:
 | Output | Pass/fail with fix list | Comprehensive AUDIT_REPORT.md |
 | Re-runnable | Only during creation | Yes — run after any edit |
 
-## Reference
+## Reference Examples
 
-See [ServiceTreeAudit/AUDIT_REPORT.md](https://github.com/gim-home/llm-first-skills/tree/main/examples/ServiceTreeAudit) for an example audit output.
+The [LLM-First Specification](https://github.com/gim-home/llm-first-specs) repo contains case studies that exemplify good methodology compliance — use them as reference when scoring:
+- [Case Study 1: SovereignAgent](https://github.com/gim-home/llm-first-specs/blob/main/CASE_STUDY_1_SovereignAgent.md) — Specs as queryable knowledge
+- [Case Study 2: MultiTeam](https://github.com/gim-home/llm-first-specs/blob/main/CASE_STUDY_2_MultiTeam.md) — Multi-team coordination
+- [Case Study 4: Methodology Capture](https://github.com/gim-home/llm-first-specs/blob/main/CASE_STUDY_4_Methodology.md) — Methodology capture with exit criteria
+
+These are loaded into context at runtime via Phase 0.
